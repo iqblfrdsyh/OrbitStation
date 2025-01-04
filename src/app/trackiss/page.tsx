@@ -15,7 +15,7 @@ interface ISSData {
     longitude: number;
 }
 
-const TrackISS: React.FC = () => {
+const TrackISS = () => {
     const [issData, setIssData] = useState<ISSData | null>(null);
     const [path, setPath] = useState<{ lat: number; lng: number }[]>([]);
 
