@@ -12,7 +12,7 @@ const HeroSection = () => {
                         <TextGenerateEffect words='ISS Tracking Made Easy with OrbitStation' />
                         <p className='max-w-[350px] sm:max-w-[400px] text-[19px] tracking-[1px] opacity-55 font-medium'>Discover the latest information about the world&apos;s largest satellite.</p>
                         <div>
-                            <Button onPress={() => window.location.replace("/trackiss")} className='bg-[#ededed] -z-10 px-7 font-medium text-[15px] tracking-[1px]' radius='sm'>
+                            <Button onPress={() => window.location.replace("/trackiss")} className='bg-[#ededed] px-7 font-medium text-[15px] tracking-[1px]' radius='sm'>
                                 Track ISS Now
                             </Button>
                         </div>
