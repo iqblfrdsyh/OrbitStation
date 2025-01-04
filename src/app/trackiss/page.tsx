@@ -27,7 +27,7 @@ const TrackISS = () => {
                     <div className="mb-8 flex flex-col justify-between items-center sm:items-start bg-white p-6 rounded-lg shadow-lg">
                         <div className="flex items-center space-x-3 sm:mb-5">
                             <FaSatellite className="text-2xl text-blue-500" />
-                            <h3 className="text-xl font-semibold text-gray-800">Live Tracking {issData.name}</h3>
+                            <h3 className="text-xl font-semibold text-gray-800">Live Tracking {issData.name.toLocaleUpperCase()}</h3>
                         </div>
 
                         <div className="mt-4 sm:mt-0 flex flex-col sm:flex-row justify-between w-full">
