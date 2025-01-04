@@ -1,56 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Polyline, Popup } from "react-leaflet";
-import { Icon } from "leaflet";
+import React from "react";
+import { FaSatellite, FaMapMarkedAlt, FaRegCompass } from "react-icons/fa";
 import "leaflet/dist/leaflet.css";
-import { axiosInstance } from "@/lib/axiosInstance";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
+import { useDataISS } from "@/libs/ISS";
+import dynamic from "next/dynamic";
 
-interface ISSData {
-    name: string;
-    altitude: number;
-    latitude: number;
-    longitude: number;
-}
+const Map = dynamic(() => import("@/components/map/map"), { ssr: false });
 
 const TrackISS = () => {
-    const [issData, setIssData] = useState<ISSData | null>(null);
-    const [path, setPath] = useState<{ lat: number; lng: number }[]>([]);
-
-    const getData = async () => {
-        try {
-            const response = await axiosInstance.get("/v1/satellites/25544");
-            const { name, altitude, latitude, longitude } = response.data;
-
-            setIssData({
-                name,
-                altitude,
-                latitude,
-                longitude,
-            });
-
-            setPath((prev) => [...prev, { lat: latitude, lng: longitude }].slice(-50));
-        } catch (error) {
-            console.error("Error fetching ISS data:", error);
-        }
-    };
-
-    useEffect(() => {
-        getData();
-        const interval = setInterval(() => {
-            getData();
-        }, 5000);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    const satelliteIcon = new Icon({
-        iconUrl: "/images/iss.svg",
-        iconSize: [100, 85],
-        iconAnchor: [25, 20],
-    });
+    const { issData, path } = useDataISS()
 
     return (
         <section className="h-screen">
@@ -66,34 +27,28 @@ const TrackISS = () => {
             </div>
             {issData ? (
                 <div className="px-5 sm:px-[60px] py-8">
-                    <div className="mb-8 flex flex-col sm:flex-row justify-between">
-                        <h3>Name: {issData.name}</h3>
-                        <p>Altitude: {issData.altitude} km</p>
-                        <p>Latitude: {issData.latitude}</p>
-                        <p>Longitude: {issData.longitude}</p>
+                    <div className="mb-8 flex flex-col justify-between items-center sm:items-start bg-white p-6 rounded-lg shadow-lg">
+                        <div className="flex items-center space-x-3 sm:mb-5">
+                            <FaSatellite className="text-2xl text-blue-500" />
+                            <h3 className="text-xl font-semibold text-gray-800">{issData.name}</h3>
+                        </div>
+
+                        <div className="mt-4 sm:mt-0 flex flex-col sm:flex-row justify-between w-full">
+                            <div className="flex items-center space-x-2">
+                                <FaMapMarkedAlt className="text-gray-600" />
+                                <p className="text-gray-700">Altitude: {issData.altitude} km</p>
+                            </div>
+                            <div className="mt-2 sm:mt-0 flex items-center space-x-2">
+                                <FaRegCompass className="text-gray-600" />
+                                <p className="text-gray-700">Latitude: {issData.latitude}</p>
+                            </div>
+                            <div className="mt-2 sm:mt-0 flex items-center space-x-2">
+                                <FaRegCompass className="text-gray-600" />
+                                <p className="text-gray-700">Longitude: {issData.longitude}</p>
+                            </div>
+                        </div>
                     </div>
-
-                    <MapContainer
-                        center={[issData.latitude, issData.longitude]}
-                        scrollWheelZoom={false}
-                        zoom={3}
-                        style={{ height: "500px", width: "100%" }}
-
-                    >
-                        <TileLayer
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-                        />
-                        <Marker
-                            position={[issData.latitude, issData.longitude]}
-                            icon={satelliteIcon}
-                        >
-                            <Popup>
-                                <span>{issData.name}</span>
-                            </Popup>
-                        </Marker>
-                        <Polyline positions={path} color="yellow" weight={2} />
-                    </MapContainer>
+                    <Map issData={issData} path={path} />
                 </div>
             ) : (
                 <p className="text-center text-[20px] font-semibold py-5">Loading data...</p>

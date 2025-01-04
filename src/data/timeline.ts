@@ -1,3 +1,4 @@
+import { IconType } from "react-icons";
 import { FaSatellite, FaRocket, FaGlobe, FaUsers, FaSpaceShuttle } from "react-icons/fa";
 
 interface TimelineEvent {
@@ -5,7 +6,7 @@ interface TimelineEvent {
     title: string;
     date: string;
     description: string;
-    icon: any;
+    icon: IconType;
 }
 
 const timelineData: TimelineEvent[] = [
