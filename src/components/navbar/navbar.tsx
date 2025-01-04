@@ -17,7 +17,7 @@ const NavigationBar = () => {
         { label: 'Timeline', href: '#timeline' },
     ]
     return (
-        <Navbar onMenuOpenChange={setIsMenuOpen} className='py-4 px-5 sm:px-[60px] z-20 absolute' position='static'>
+        <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} className='py-4 px-5 sm:px-[60px] z-20 absolute' position='static'>
             <NavbarContent>
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -46,6 +46,7 @@ const NavigationBar = () => {
                         <Link
                             className="w-full tracking-[1px]"
                             href={item.href}
+                            onClick={() => setIsMenuOpen(false)}
                         >
                             {item.label}
                         </Link>

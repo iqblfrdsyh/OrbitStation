@@ -4,7 +4,6 @@ import React from "react";
 import { FaSatellite, FaMapMarkedAlt, FaRegCompass } from "react-icons/fa";
 import "leaflet/dist/leaflet.css";
 import { Button } from "@nextui-org/react";
-import Link from "next/link";
 import { useDataISS } from "@/libs/ISS";
 import dynamic from "next/dynamic";
 
@@ -14,15 +13,13 @@ const TrackISS = () => {
     const { issData, path } = useDataISS()
 
     return (
-        <section className="h-screen">
+        <section className="h-screen z-30">
             <div className="flex justify-between items-center px-5 sm:px-[60px] py-8">
                 <h1 className="py-8 text-[23px] text-center font-semibold">Track ISS</h1>
                 <div>
-                    <Link href="/">
-                        <Button className="bg-white" radius="sm">
-                            Back to Home
-                        </Button>
-                    </Link>
+                    <Button onPress={() => window.location.replace("/")} className=" bg-white" radius="sm">
+                        Back to Home
+                    </Button>
                 </div>
             </div>
             {issData ? (
