@@ -38,7 +38,7 @@ header {
   }
 }
 
-@media (max-width: 640) {
+@media (max-width: 640px) {
   .vertical-timeline-element-date {
     color: #0f0f0f !important;
   }
