@@ -1,6 +1,6 @@
 "use client"
 
-import Banner from "@/components/banner/banner";
+import Offering from "@/components/offering/offering";
 import About from "@/components/sections/about/about";
 import HeroSection from "@/components/sections/hero-section/heroSection";
 import Timeline from "@/components/sections/timeline/timeline";
@@ -12,8 +12,7 @@ const Home = () => {
       <HeroSection />
       <About />
       <Timeline />
-      <Banner />
-
+      <Offering />
     </React.Fragment>
   );
 }

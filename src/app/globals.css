@@ -37,3 +37,9 @@ header {
     --tw-backdrop-saturate: none;
   }
 }
+
+@media (max-width: 640) {
+  .vertical-timeline-element-date {
+    color: #0f0f0f !important;
+  }
+}

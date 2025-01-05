@@ -18,7 +18,7 @@ const HeroSection = () => {
                         </div>
                     </div>
                 </div>
-                <Image src="/images/earth.svg" alt='earth' width={630} height={630} draggable={false} className='absolute t right-0 bottom-0 hidden sm:block sm:top-0 z-50' priority={true} />
+                <Image src="/images/earth.svg" alt='earth' width={610} height={610} draggable={false} className='absolute t right-0 bottom-0 hidden sm:block sm:top-0 z-50' priority={true} />
             </div>
         </section>
     )

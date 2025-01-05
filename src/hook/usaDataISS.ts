@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { axiosInstance } from "./axiosInstance";
+import { axiosInstance } from "../libs/axiosInstance";
 
 interface ISSData {
   name: string;
@@ -36,7 +36,7 @@ export function useDataISS() {
     getData();
     const interval = setInterval(() => {
       getData();
-    }, 5000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);

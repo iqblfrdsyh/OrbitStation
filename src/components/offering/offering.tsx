@@ -1,7 +1,7 @@
 import { Button } from '@nextui-org/react'
 import React from 'react'
 
-const Banner = () => {
+const Offering = () => {
     return (
         <div className="relative h-[550px]">
             <div className='mt-48 absolute w-full py-10 sm:py-0 sm:h-80 bg-[#1F1F1F] left-0'>
@@ -17,4 +17,4 @@ const Banner = () => {
     )
 }
 
-export default Banner
+export default Offering

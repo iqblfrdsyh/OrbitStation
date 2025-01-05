@@ -3,7 +3,7 @@ import React from 'react'
 
 const About = () => {
     return (
-        <section id='about' className='mt-20 sm:mt-32 px-5 sm:px-[60px]'>
+        <section id='about' className='mt-20 sm:mt-36 px-5 sm:px-[60px]'>
             <div className='flex justify-between items-center flex-col gap-14 sm:flex-row '>
                 <Image src='/images/iss.svg' alt='iss' width={650} height={650} className='mt-5' />
                 <div className='flex flex-col gap-5'>

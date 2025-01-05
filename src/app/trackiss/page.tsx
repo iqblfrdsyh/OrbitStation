@@ -4,7 +4,7 @@ import React from "react";
 import { FaSatellite, FaMapMarkedAlt, FaRegCompass } from "react-icons/fa";
 import "leaflet/dist/leaflet.css";
 import { Button } from "@nextui-org/react";
-import { useDataISS } from "@/libs/ISS";
+import { useDataISS } from "@/hook/usaDataISS";
 import dynamic from "next/dynamic";
 
 const Map = dynamic(() => import("@/components/map/map"), { ssr: false });
